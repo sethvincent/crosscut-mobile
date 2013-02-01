@@ -1,0 +1,17 @@
+{ 
+  "name": "crosscut-mobile", 
+  "version": "0.0.1",
+  "description": "A mobile news app for crosscut.com built with phonegap and backbone.", 
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/sethvincent/crosscut-mobile.git" 
+  }, 
+  "devDependencies": { 
+    "grunt": "0.4.0rc7", 
+    "grunt-contrib-clean": "0.4.0rc6", 
+  }, 
+  "license": "MIT", 
+  "engines": { 
+    "node": ">=0.8" 
+  } 
+}
