@@ -18,7 +18,8 @@
  */
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /* make transparent link selection, adjust last value opacity 0 to 1.0 */ }
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */ 
+}
 
 body {
   -webkit-touch-callout: none;
@@ -37,24 +38,31 @@ body {
   width: 100%;
   color: #343430;
   text-shadow: 1px 1px 0px white;
-  filter: dropshadow(color=white, offx=1, offy=1); }
+  filter: dropshadow(color=white, offx=1, offy=1); 
+}
 
 a {
   text-decoration: none;
-  color: #343430; }
+  color: #343430; 
+}
 
 strong {
-  font-weight: 700; }
+  font-weight: 700; 
+}
 
 #app {
-  height: 100%; }
+  height: 100%; 
+}
 
 #scrollable {
   margin: 0px auto 0px auto;
   width: 100%;
-  height: 576px; }
-  #scrollable .wrapper {
-    padding: 0px 20px; }
+  height: 592px; 
+}
+
+#scrollable .wrapper {
+  padding: 0px 20px; 
+}
 
 /* Landscape layout (with min-width) */
 header {
@@ -64,17 +72,20 @@ header {
   height: 40px;
   border-bottom: 1px solid #d6d6d0;
   -webkit-box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1);
-  box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1); }
+  box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1); 
+}
 
 header a {
-  color: #c6c6c0; }
+  color: #c6c6c0; 
+}
 
 header h1 {
   margin: 0px;
   font-size: 0.8em;
   text-align: center;
   font-weight: 100;
-  padding-top: 8px; }
+  padding-top: 8px; 
+}
 
 header span.back {
   display:none;
@@ -88,7 +99,8 @@ header span.back {
   position: absolute;
   border: 1px solid #d6d6d0;
   -webkit-box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1);
-  box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1); }
+  box-shadow: inset 0px -3px 5px 0px rgba(155, 155, 155, 0.1), inset 0px 3px 5px 0px rgba(155, 155, 155, 0.1), 0px 1px 0px 0px white, 0px 2px 15px -1px rgba(155, 155, 155, 0.1); 
+}
 
 footer {
   background-color: #35352C;
@@ -102,17 +114,18 @@ footer {
 }
 
 footer ul {
-  list-style-type: none; 
+  list-style-type: none;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 footer ul li {
   display: inline-block;
   border-right: 1px solid #000;
-  height: 36px;
-  padding: 14px 10px 0px;
-  width: 15%;
   text-align: center;
   font-size: 9px;
+  height: 50px;
 }
 
 footer ul li:first-child {
@@ -120,7 +133,9 @@ footer ul li:first-child {
 }
 
 footer ul li a {
-  color: white; 
+  color: white;
+  display: block;
+  padding: 15px 20px;
 }
 
 /* HOME */
@@ -128,7 +143,7 @@ footer ul li a {
   margin-top: 20px;
 }
 
-.home .section {
+.home .section a {
   margin: 10px auto;
   background-color: #fff;
   float: none;
@@ -136,7 +151,12 @@ footer ul li a {
   border: 1px solid #cfcfcf;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(100, 100, 100, .1), inset 0px 0px 3px 0px rgba(100, 100, 100, .1);
   box-shadow: 0px 0px 6px 0px rgba(100, 100, 100, .1), inset 0px 0px 3px 0px rgba(100, 100, 100, .1);
-  padding: 10px 25px;
+  padding: 30px 25px 25px;
+}
+
+.home .section a:focus {
+  margin-top: 1px;
+  margin-left: 1px;
 }
 
 /* stories */
@@ -144,40 +164,47 @@ div.story, div.story-teaser {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 20px;
   -webkit-box-shadow: 0px 1px 0px 0px white;
-  box-shadow: 0px 1px 0px 0px white; }
+  box-shadow: 0px 1px 0px 0px white; 
+}
 
 div.story-teaser {
-  padding-bottom: 3px; }
+  padding-bottom: 3px; 
+}
 
 div.story h3, div.story-teaser h3 {
   font-family: georgia;
   font-weight: 100;
   font-size: 1.2em;
-  margin-bottom: 5px; }
+  margin-bottom: 5px; 
+}
 
 div.authors {
-  font-size: 0.8em; }
+  font-size: 0.8em; 
+}
 
 div.authors span.by {
   color: #a2a2a8;
   font-style: italic;
   font-family: Georgia;
   font-weight: 100;
-  font-size: 0.7em; }
+  font-size: 0.7em; 
+}
 
 div.story-body, div.story-summary {
   font-size: 0.9em;
-  line-height: 1.4em; }
+  line-height: 1.4em; 
+}
 
 div.story-teaser p {
-  margin: 3px 0px 7px 0px; }
+  margin: 3px 0px 7px 0px; 
+}
 
-  img.story-image {
+img.story-image {
   width: 100%;
   height: auto;
   margin-top: 15px;
-  }
-  
+}
+
 .next{
   cursor: pointer;
 }

@@ -10,7 +10,11 @@ Crosscut.Views.Root = Backbone.View.extend({
   },
   
   events: {
-    'click .back': 'goto_stories'
+    'click .back': 'back'
+  },
+  
+  back: function(){
+    window.history.back();
   },
   
   startRouting: function(){
@@ -31,37 +35,51 @@ Crosscut.Views.Root = Backbone.View.extend({
   },
   
   goto_home: function() {
-    console.log("current view", this.currentContentView);
-    this.currentContentView = new Crosscut.Views.Home();
+    this.homeView = this.homeView || new Crosscut.Views.Home();
+    this.homeView.render();
+    console.log("homeView", this.homeView)
     this.router.navigate("");
     $('.back').hide();
   },
   
   goto_stories: function() {
-    console.log("current view", this.currentContentView);
-    this.currentContentView = new Crosscut.Views.StoriesMain();
+    this.storiesView = this.storiesView || new Crosscut.Views.StoriesMain();
+    this.storiesView.render();
+    console.log("storiesView", this.storiesView)
     this.router.navigate("stories");
-    $('.back').hide();
+    $('.back').show();
   },
   
   goto_story: function(id) {
-    console.log("current view", this.currentContentView);
-    this.currentContentView = new Crosscut.Views.StoryView({ id: id });
+    this.storyView = new Crosscut.Views.StoryView({ id: id });
+    this.storyView.render();
+    console.log("storyView", this.storyView)
     this.router.navigate("story/" + id);
     $('.back').show();
   },
   
-  goto_more: function() {
-    console.log("current view", this.currentContentView);
-    this.currentContentView = new Crosscut.Views.More();
-    this.router.navigate("more");
-    $('.back').hide();
+  goto_clicker: function() {
+    this.clickerView = this.clickerView || new Crosscut.Views.Clicker();
+    this.clickerView.render();
+    console.log("clickerView", this.clickerView)
+    this.router.navigate("clicker");
+    $('.back').show();
   },
   
-  goto_clicker: function() {
-    console.log("current view", this.currentContentView);
-    this.currentContentView = new Crosscut.Views.Clicker();
-    this.router.navigate("clicker");
-    $('.back').hide();
+  goto_member: function() {
+    this.memberView = this.memberView || new Crosscut.Views.Member();
+    this.memberView.render();
+    console.log("memberView", this.memberView)
+    this.router.navigate("member");
+    $('.back').show();
   },
+  
+  goto_more: function() {
+    this.moreView = this.moreView || new Crosscut.Views.More();
+    this.moreView.render();
+    console.log("moreView", this.moreView)
+    this.router.navigate("more");
+    $('.back').show();
+  }
+  
 });
