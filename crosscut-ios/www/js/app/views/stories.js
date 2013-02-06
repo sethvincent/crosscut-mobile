@@ -45,7 +45,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
     this.collection.fetch({ 
       dataType: 'jsonp',
       success: function(){
-        self.render();
+        //self.render();
       }
     });
     
@@ -62,6 +62,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
       .done(function( data, textStatus, jqXHR ) {
         console.log("UPDATED!!!!!", data);
       });
+    $(".next")[0].remove();
   },
   
   renderStoryTeaser: function(model){
@@ -73,7 +74,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
     var context = { 
       stories: this.collection.toJSON()
     };
-    this.$el.html( _.template( $('#story-list-view').html(), context ) );
+    this.$el.append( _.template( $('#story-list-view').html(), context ) );
     return this;
   }
 });
@@ -86,6 +87,8 @@ Crosscut.Views.StoriesMain = Backbone.View.extend({
   },
   
   render: function(){
+    console.log("huh", this);
+    this.$el.html( $("#stories-main").html() );
     this.storylist = new Crosscut.Views.StoryListView();
   }
 });
