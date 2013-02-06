@@ -40,6 +40,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
   
   initialize: function(options){
     var self = this;
+    $(".loading").show();
     _.bindAll(this, 'render', 'renderStoryTeaser', 'update');
     this.collection = new Crosscut.Collections.StoryList;
     this.collection.fetch({ 
@@ -60,7 +61,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
     e.preventDefault();
     this.collection.requestNextPage()
       .done(function( data, textStatus, jqXHR ) {
-        console.log("UPDATED!!!!!", data);
+        //console.log("UPDATED!!!!!", data);
       });
     $(".next")[0].remove();
   },
@@ -75,6 +76,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
       stories: this.collection.toJSON()
     };
     this.$el.append( _.template( $('#story-list-view').html(), context ) );
+    $(".loading").hide();
     return this;
   }
 });
@@ -90,5 +92,6 @@ Crosscut.Views.StoriesMain = Backbone.View.extend({
     console.log("huh", this);
     this.$el.html( $("#stories-main").html() );
     this.storylist = new Crosscut.Views.StoryListView();
+    return this;
   }
 });
