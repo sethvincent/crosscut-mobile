@@ -4,6 +4,7 @@ Crosscut.Views.StoryView = Backbone.View.extend({
   
   initialize: function(options){
     var self = this;
+    console.log("storyView", options.id)
     this.model = new Crosscut.Models.Story({ path: options.id });
     this.model.fetch({
       dataType: 'jsonp',
@@ -17,6 +18,7 @@ Crosscut.Views.StoryView = Backbone.View.extend({
     var context = { 
       story: this.model.toJSON()
     };
+    console.log("storyView context", context)
     this.$el.html( this.template( this.model.toJSON(), context ) );
     return this;
   }
@@ -46,18 +48,19 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
         self.render();
       }
     });
+    
+    this.collection.on('reset', this.render, this);
+    this.collection.on('change', this.render, this);
   },
   events: {
     'click .next': 'update'
   },
   
-  update: function(options){
-    var self = this;
-    //this.collection.moreStories(options);
+  update: function(e){
+    e.preventDefault();
     this.collection.requestNextPage()
       .done(function( data, textStatus, jqXHR ) {
-        self.render();
-        console.log(data);
+        console.log("UPDATED!!!!!", data);
       });
   },
   
@@ -80,12 +83,9 @@ Crosscut.Views.StoriesMain = Backbone.View.extend({
   
   initialize: function(options){
     _.bindAll(this, 'render');
-    this.render();
   },
   
   render: function(){
-    //this.$el.html( _.template( $('#home').html() ) );
-    
     this.storylist = new Crosscut.Views.StoryListView();
   }
 });

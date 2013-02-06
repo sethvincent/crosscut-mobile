@@ -2,7 +2,8 @@ scroller = new FTScroller(document.getElementById('scrollable'), {
   scrollingX: false,
   scrollbars: false,
   updateOnWindowResize: true,
-  maxFlingDuration: 1
+  maxFlingDuration: 0,
+  bouncing: false
 });
     
 window.addEventListener('load', function() {

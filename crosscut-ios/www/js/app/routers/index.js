@@ -4,11 +4,11 @@ Crosscut.Routers.Index = Backbone.Router.extend({
     "stories": "stories",
     "story/:id": "story",
     "clicker": "clicker",
+    "member": "member",
     "more": "more"
   },
   
   initialize: function(options){
-    console.log("router initializing")
     this.controller = options.controller;
   },
   
@@ -21,11 +21,16 @@ Crosscut.Routers.Index = Backbone.Router.extend({
   },
     
   story: function(id){
+    console.log("index.js", id)
     this.controller.goto_story(id);
   },
   
   clicker: function(){
     this.controller.goto_clicker();
+  },
+  
+  member: function(){
+    this.controller.goto_member();
   },
   
   more: function(){

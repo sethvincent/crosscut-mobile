@@ -1,5 +1,6 @@
 Crosscut.Models.Story = Backbone.Model.extend({
   initialize: function(options){
+    console.log("story model", options.path)
     this.path = options.path;
   },
   
@@ -39,7 +40,6 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
   },
   
   initialize: function(){
-    _.bindAll(this, 'parse');
     console.log("collection", this);
   },
   
@@ -77,19 +77,4 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
     this
   },
   
-});
-
-Crosscut.Views.StoriesMain = Backbone.View.extend({
-  el: $("#app .wrapper"),
-  
-  initialize: function(options){
-    _.bindAll(this, 'render');
-    this.render();
-  },
-  
-  render: function(){
-    this.$el.html( _.template( $('#home').html() ) );
-    
-    this.storylist = new Crosscut.Views.StoryListView();
-  }
 });

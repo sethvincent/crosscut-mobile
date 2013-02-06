@@ -39,9 +39,16 @@
     </script>
     
     <script type="text/template" id="more">
-      <div class="home">
+      <div class="more">
         <h3>The more page</h3>
-        <p>For stuff like settings, colophon, membership info.</p>
+        <p>For stuff like settings, colophon, etc.</p>
+      </div>
+    </script>
+    
+    <script type="text/template" id="member">
+      <div class="member">
+        <h3>The member page</h3>
+        <p>For membership info.</p>
       </div>
     </script>
     
@@ -53,18 +60,25 @@
     </script>
     
     <script type="text/template" id="stories-main">
-      <div class="home">
+      <div class="stories-main">
         <div class="story-list-view"></div>
       </div>
     </script>
     
     <script type="text/template" id="story-view">
-      <div class="story story-<%= id %>">
-        <a href="#story/<%= id %>">
+      <div class="story story-<%= title %>">
         <img src="http://crosscut.com<%= images[0].image %>" class="story-image" />
-          <h3 class="story-title"><%= title %></h3>
-          <div class="story-summary"><%= summary %></div>
-        </a>
+        <h3 class="story-title"><%= title %></h3>
+        <div class="story-summary"><%= summary %></div>
+        <div class="authors">
+          <span class="by">by:</span>
+          <% if (authors[0].first_name === "" || authors[0].last_name === "") { %>
+            <%= authors[0].username %>
+          <% } else { %>
+            <%= authors[0].first_name %> <%= authors[0].last_name %>
+          <% } %>
+        </div>
+        <div class="story-content"><%= body %>
       </div>
     </script>
     
@@ -97,6 +111,7 @@
     <script type="text/javascript" src="js/app/routers/index.js"></script>
     <script type="text/javascript" src="js/app/views/stories.js"></script>
     <script type="text/javascript" src="js/app/views/home.js"></script>
+    <script type="text/javascript" src="js/app/views/member.js"></script>
     <script type="text/javascript" src="js/app/views/more.js"></script>
     <script type="text/javascript" src="js/app/views/clicker.js"></script>
     <script type="text/javascript" src="js/app/views/root.js"></script>
