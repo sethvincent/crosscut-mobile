@@ -1,6 +1,6 @@
 scroller = new FTScroller(document.getElementById('scrollable'), {
   scrollingX: false,
-  scrollbars: false,
+  scrollbars: true,
   updateOnWindowResize: true,
   maxFlingDuration: 0,
   bouncing: false
