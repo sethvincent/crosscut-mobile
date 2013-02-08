@@ -57,6 +57,7 @@ strong {
 #scrollable {
   margin: 0px auto 0px auto;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 #scrollable .wrapper {
