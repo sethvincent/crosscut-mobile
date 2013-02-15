@@ -21,6 +21,8 @@ Crosscut.Views.Root = Backbone.View.extend({
     Backbone.history.start();
   },
   
+  /*
+  // not currently using this
   getOrCreateView: function(name, options) {
     // Register each view as it is created and never create more than one.
     if (name in this.views) {
@@ -33,6 +35,7 @@ Crosscut.Views.Root = Backbone.View.extend({
     console.log(this.views)
     return this.views[name];
   },
+  */
   
   goto_home: function() {
     this.homeView = this.homeView || new Crosscut.Views.Home();
@@ -45,8 +48,16 @@ Crosscut.Views.Root = Backbone.View.extend({
   goto_stories: function() {
     this.storiesView = this.storiesView || new Crosscut.Views.StoriesMain();
     this.storiesView.render();
-    console.log("storiesView", this.storiesView)
+    console.log("storiesView", this.storiesView.cid)
     this.router.navigate("stories");
+    $('.back').show();
+  },
+  
+  goto_troll: function() {
+    this.trollView = this.trollView || new Crosscut.Views.TrollMain();
+    this.trollView.render();
+    console.log("storiesView", this.trollView.cid)
+    this.router.navigate("troll");
     $('.back').show();
   },
   
@@ -59,7 +70,7 @@ Crosscut.Views.Root = Backbone.View.extend({
   },
   
   goto_clicker: function() {
-    this.clickerView = this.clickerView || new Crosscut.Views.Clicker();
+    this.clickerView = this.clickerView || new Crosscut.Views.ClickerMain();
     this.clickerView.render();
     console.log("clickerView", this.clickerView)
     this.router.navigate("clicker");
@@ -74,11 +85,11 @@ Crosscut.Views.Root = Backbone.View.extend({
     $('.back').show();
   },
   
-  goto_more: function() {
-    this.moreView = this.moreView || new Crosscut.Views.More();
-    this.moreView.render();
-    console.log("moreView", this.moreView)
-    this.router.navigate("more");
+  goto_about: function() {
+    this.aboutView = this.aboutView || new Crosscut.Views.About();
+    this.aboutView.render();
+    console.log("moreView", this.aboutView)
+    this.router.navigate("about");
     $('.back').show();
   }
   

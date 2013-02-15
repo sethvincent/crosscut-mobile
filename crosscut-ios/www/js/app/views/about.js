@@ -1,4 +1,4 @@
-Crosscut.Views.More = Backbone.View.extend({
+Crosscut.Views.About = Backbone.View.extend({
   el: $("#app .wrapper"),
   
   initialize: function(options){
@@ -7,6 +7,6 @@ Crosscut.Views.More = Backbone.View.extend({
   },
   
   render: function(){
-    this.$el.html( _.template( $('#more').html() ) );
+    this.$el.html( _.template( $('#about').html() ) );
   }
 });

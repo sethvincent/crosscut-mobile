@@ -1,21 +1,20 @@
-Crosscut.Models.Story = Backbone.Model.extend({
+Crosscut.Models.Clicker = Backbone.Model.extend({
   initialize: function(options){
     this.path = options.path;
   },
   
   url: function(){
-    return Crosscut.url + 'story/' + this.path;
+    return Crosscut.url + 'remote_story/' + this.path;
   }
 });
 
 
-Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
-  
-  model: Crosscut.Models.Story,
+Crosscut.Collections.ClickerList = Backbone.Paginator.requestPager.extend({  
+  model: Crosscut.Models.Clicker,
   paginator_core: {
     type: 'GET',
     dataType: 'jsonp',
-    url: Crosscut.url + 'story/'
+    url: Crosscut.url + 'remote_story/'
   },
   
   paginator_ui: {

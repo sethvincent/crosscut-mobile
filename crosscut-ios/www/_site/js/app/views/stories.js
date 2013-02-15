@@ -4,7 +4,6 @@ Crosscut.Views.StoryView = Backbone.View.extend({
   
   initialize: function(options){
     var self = this;
-    console.log("storyView", options.id)
     this.model = new Crosscut.Models.Story({ path: options.id });
     this.model.fetch({
       dataType: 'jsonp',
@@ -18,22 +17,15 @@ Crosscut.Views.StoryView = Backbone.View.extend({
     var context = { 
       story: this.model.toJSON()
     };
-    console.log("storyView context", context)
     this.$el.html( this.template( this.model.toJSON(), context ) );
+    
+    if ( $(".wrapper").scrollTop() > 0 ) {
+      $(".wrapper").scrollTop(0);
+    }
+    
     return this;
   }
 });
-
-Crosscut.Views.StoryTeaserView = Backbone.View.extend({
-  className: 'story-teaser',
-  template: _.template( $('#story-view').html() ),
-  
-  render: function(){
-    this.$el.html( this.template( this.model.toJSON()));
-    return this;
-  }
-});
-
 
 Crosscut.Views.StoryListView = Backbone.View.extend({
   el: $('#app .wrapper'),
@@ -41,15 +33,13 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
   initialize: function(options){
     var self = this;
     $(".loading").show();
-    _.bindAll(this, 'render', 'renderStoryTeaser', 'update');
+    _.bindAll(this, 'render', 'update');
     this.collection = new Crosscut.Collections.StoryList;
     this.collection.fetch({ 
       dataType: 'jsonp',
-      success: function(){
-        //self.render();
-      }
+      success: function(){}
     });
-    
+    console.log("storys view update", this)
     this.collection.on('reset', this.render, this);
     this.collection.on('change', this.render, this);
   },
@@ -59,16 +49,10 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
   
   update: function(e){
     e.preventDefault();
-    this.collection.requestNextPage()
-      .done(function( data, textStatus, jqXHR ) {
-        //console.log("UPDATED!!!!!", data);
-      });
+    this.collection.requestNextPage({ update: true, remove: true });
+    this.render();
+    console.log("storys view update", this)
     $(".next")[0].remove();
-  },
-  
-  renderStoryTeaser: function(model){
-    this.storyTeaserView = new Crosscut.Views.StoryTeaserView({ model: model })
-    this.$el.append( this.storyTeaserView.render().el );
   },
   
   render: function(){
@@ -81,6 +65,7 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
   }
 });
 
+
 Crosscut.Views.StoriesMain = Backbone.View.extend({
   el: $("#app .wrapper"),
   
@@ -89,7 +74,6 @@ Crosscut.Views.StoriesMain = Backbone.View.extend({
   },
   
   render: function(){
-    console.log("huh", this);
     this.$el.html( $("#stories-main").html() );
     this.storylist = new Crosscut.Views.StoryListView();
     return this;

@@ -1,6 +1,5 @@
 Crosscut.Models.Story = Backbone.Model.extend({
   initialize: function(options){
-    console.log("story model", options.path)
     this.path = options.path;
   },
   
@@ -27,20 +26,19 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
   },
   
   server_api: {
-    'filter': function() {return this.filterString },
-    'limit': function() { return this.perPage },
-    'offset': function() {
-      if ( this.currentPage === 0 ){
-        return 0;
-      } else {
-        return this.currentPage * this.perPage
+    'filter': function() {return this.filterString; },
+    'limit': function() { return this.perPage; },
+    'offset': function() { 
+      console.log("current page:", this.currentPage)
+      if (this.currentPage === 1) {
+        return this.perPage;
       }
-    },
-    'skip': function() { return this.currentPage * this.perPage }
+      else { return this.currentPage * this.perPage; }
+    }
   },
   
   initialize: function(){
-    console.log("collection", this);
+    //console.log("collection", this);
   },
   
   setFilter: function (filter) {
@@ -51,13 +49,13 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
   parse: function (response) {
     // Be sure to change this based on how your results
     // are structured (e.g d.results is Netflix specific)
-    var tags = response.objects;
+    var data = response.objects;
     //Normally this.totalPages would equal response.d.__count
     //but as this particular NetFlix request only returns a
     //total count of items for the search, we divide.
     this.totalPages = Math.ceil(response.meta.total_count / this.perPage);
     this.totalRecords = parseInt(response.meta.total_count);
-    return tags;
+    return data;
   },
   
   search_url: function(term) {
@@ -71,10 +69,6 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
     } else {
       this.fetch();
     };
-  },
-  
-  moreStories: function(options){
-    this
-  },
+  }
   
 });
