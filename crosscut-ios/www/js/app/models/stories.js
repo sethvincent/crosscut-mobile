@@ -21,7 +21,7 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
   paginator_ui: {
     firstPage: 0,
     currentPage: 0,
-    perPage: 10,
+    perPage: 20,
     totalPages: 10
   },
   

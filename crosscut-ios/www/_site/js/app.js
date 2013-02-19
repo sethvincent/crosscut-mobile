@@ -6,11 +6,11 @@ scroller = new FTScroller(document.getElementById('scrollable'), {
   maxFlingDuration: 0,
   bouncing: false
 });
-*/
+
 window.addEventListener('load', function() {
   new FastClick(document.body);
 }, false);
-
+*/
 
 window.Crosscut = {
   url: "http://crosscut.com/api/v1/",

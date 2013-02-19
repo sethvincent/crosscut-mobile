@@ -19,16 +19,14 @@ Crosscut.Views.StoryView = Backbone.View.extend({
     };
     this.$el.html( this.template( this.model.toJSON(), context ) );
     
-    if ( $(".wrapper").scrollTop() > 0 ) {
-      $(".wrapper").scrollTop(0);
-    }
+    window.scrollTo(0, 0);
     
     return this;
   }
 });
 
 Crosscut.Views.StoryListView = Backbone.View.extend({
-  el: $('#app .wrapper'),
+  className: 'stories',
   
   initialize: function(options){
     var that = this;
@@ -48,20 +46,25 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
   update: function(e){
     e.preventDefault();
     var that = this;
+    $(".next").text("loading ...");
     this.collection.requestNextPage({ update: true, remove: true })
       .done(function(){
-        console.log("update done", this.url);
+        console.log("updated. view:", that);
+        console.log("updated. collection:", that.collection);
+        console.log("updated. request:", this);
         that.render();
+        $(".next")[0].remove();
       });
-    $(".next")[0].remove();
+    
   },
   
   render: function(){
+    console.log("is this running?")
     var context = { 
       stories: this.collection.toJSON()
     };
-      
-    this.$el.append( _.template( $('#story-list-view').html(), context ) );
+    var html = this.$el.append( _.template( $('#story-list-view').html(), context ) )
+    $('.stories-main').append( html );
     $(".loading").hide();
     return this;
   }
@@ -72,11 +75,18 @@ Crosscut.Views.StoriesMain = Backbone.View.extend({
   el: $("#app .wrapper"),
   
   initialize: function(options){
-    //this.render();
+
   },
   
   render: function(){
     this.$el.html( $("#stories-main").html() );
+    
+    if ( this.storylist != null ) {
+      this.storylist.remove();
+      this.storylist = new Crosscut.Views.StoryListView();
+      return this;
+    }
+
     this.storylist = new Crosscut.Views.StoryListView();
     return this;
   }
