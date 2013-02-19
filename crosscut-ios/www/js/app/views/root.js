@@ -61,6 +61,7 @@ Crosscut.Views.Root = Backbone.View.extend({
   goto_story: function(id) {
     this.views.storyView = new Crosscut.Views.StoryView({ id: id });
     this.router.navigate("story/" + id);
+    $('.back').show();
   },
   
   goto_clicker: function() {
