@@ -13,6 +13,10 @@ Crosscut.Routers.Index = Backbone.Router.extend({
     this.controller = options.controller;
   },
   
+  after: function(route) { 
+    scroller.scrollTo(0, 0, 0);
+  },
+  
   home: function(){
     this.controller.goto_home();
   },
