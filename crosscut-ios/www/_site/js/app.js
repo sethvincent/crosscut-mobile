@@ -1,4 +1,3 @@
-/*
 scroller = new FTScroller(document.getElementById('scrollable'), {
   scrollingX: false,
   scrollbars: true,
@@ -10,7 +9,6 @@ scroller = new FTScroller(document.getElementById('scrollable'), {
 window.addEventListener('load', function() {
   new FastClick(document.body);
 }, false);
-*/
 
 window.Crosscut = {
   url: "http://crosscut.com/api/v1/",

@@ -171,6 +171,13 @@ footer ul li a {
   margin-left: 1px;
 }
 
+.home .section img {
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+}
+
 h3 {
   font-family: georgia;
   font-weight: 100;

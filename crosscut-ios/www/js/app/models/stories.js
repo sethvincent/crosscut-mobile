@@ -29,13 +29,11 @@ Crosscut.Collections.StoryList = Backbone.Paginator.requestPager.extend({
     'filter': function() {return this.filterString; },
     'limit': function() { return this.perPage; },
     'offset': function() { 
-      console.log("current page:", this.currentPage);
       return this.currentPage * this.perPage * 1;
     }
   },
   
   initialize: function(){
-    //console.log("collection", this);
   },
   
   setFilter: function (filter) {
