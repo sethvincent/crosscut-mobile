@@ -1,43 +1,37 @@
 Crosscut.Views.TrollListView = Backbone.View.extend({
-  el: $('#app .wrapper'),
+  className: 'troll-stories',
   
   initialize: function(options){
-    var self = this;
+    var that = this;
     $(".loading").show();
-    _.bindAll(this, 'render', 'renderStoryTeaser', 'update');
     this.collection = new Crosscut.Collections.TrollList;
-    this.collection.fetch({ 
-      dataType: 'jsonp',
-      success: function(){
-        //self.render();
-        console.log("huh", self)
-      }
-    });
-    
-    this.collection.on('reset', this.render, this);
-    this.collection.on('change', this.render, this);
+    this.collection.fetch({ update: true, remove: true })
+      .done(function(){
+        that.render();
+      });
   },
+  
   events: {
     'click .next': 'update'
   },
   
   update: function(e){
     e.preventDefault();
-    this.collection.requestNextPage()
-      .done(function( data, textStatus, jqXHR ) {});
-    $(".next")[0].remove();
-  },
-  
-  renderStoryTeaser: function(model){
-    this.storyTeaserView = new Crosscut.Views.StoryTeaserView({ model: model })
-    this.$el.append( this.storyTeaserView.render().el );
+    var that = this;
+    $(".next").text("loading ...");
+    this.collection.requestNextPage({ update: true, remove: true })
+      .done(function(){
+        that.render();
+        $(".next")[0].remove();
+      });
   },
   
   render: function(){
     var context = { 
       stories: this.collection.toJSON()
     };
-    this.$el.append( _.template( $('#daily-troll-list-view').html(), context ) );
+    var html = this.$el.append( _.template( $('#daily-troll-list-view').html(), context ) )
+    $('.troll-main').append( html );
     $(".loading").hide();
     return this;
   }

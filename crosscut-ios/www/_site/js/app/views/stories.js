@@ -19,7 +19,6 @@ Crosscut.Views.StoryView = Backbone.View.extend({
     };
         
     this.$el.html( this.template( this.model.toJSON(), context ) );
-    scroller.scrollTo(0, 0, 0);
     
     return this;
   }
@@ -51,7 +50,6 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
         that.render();
         $(".next")[0].remove();
       });
-    
   },
   
   render: function(){
@@ -64,7 +62,6 @@ Crosscut.Views.StoryListView = Backbone.View.extend({
     return this;
   }
 });
-
 
 Crosscut.Views.StoriesMain = Backbone.View.extend({
   el: $("#app .wrapper"),
