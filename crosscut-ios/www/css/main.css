@@ -263,6 +263,11 @@ img.story-image {
   box-shadow:  1px 1px 3px 0px rgba(50, 50, 50, 0.1);
 }
 
+.story-content img {
+  width: 100% !important;
+  height: auto !important;
+}
+
 .next{
   cursor: pointer;
   margin: 5px auto;

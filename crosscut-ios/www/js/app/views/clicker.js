@@ -22,7 +22,7 @@ Crosscut.Views.ClickerListView = Backbone.View.extend({
     this.collection.requestNextPage({ update: true, remove: true })
       .done(function(){
         that.render();
-        $(".next")[0].remove();
+        $(".next:lt(1)").remove();
       });
   },
   
