@@ -166,7 +166,7 @@
     <script type="text/template" id="clicker-list-view">
       <% _.each(stories, function(story) { %>
         <div class="story-teaser story-<%= story.id %>">
-          <a href="<%= story.url %>">
+          <a href="<%= story.url %>" rel="external" target="_system">
             <h3 class="story-title"><%= story.title %></h3>
             <div class="story-summary"><%= story.summary %></div>
             <div class="story-date"><%= moment(story.pub_date).calendar() %></div>
