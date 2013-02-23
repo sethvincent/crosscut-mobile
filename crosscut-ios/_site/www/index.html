@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Crosscut</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <span class="back">back</span>
+        <h1><a href="/"><img src="img/crosscut_logo.png"></a></h1>
+      </header>
+      <div id="scrollable">
+        <div class="wrapper">
+        </div>
+      </div>
+      <footer>
+        <ul>
+          <li><a href="#"><img src="img/icon_home_small.png" /></a></li>
+          <li><a href="#stories"><img src="img/icon_stories_small.png" /></a></li>
+          <li><a href="#troll"><img src="img/icon_troll_small.png" /></a></li>
+          <li><a href="#clicker"><img src="img/icon_clicker_small.png" /></a></li>
+          <li><a href="#about"><img src="img/icon_about_small.png" /></a></li>
+        </ul>
+      </footer>
+    </div>
+    
+    
+    <!-- TEMPLATES! -->
+    <script type="text/template" id="home">
+      <div class="home">
+        <div class="section">
+          <h3>
+            <a href="#stories">
+              <img src="img/icon_stories.png" />
+              Recent Stories
+            </a>
+          </h3>
+        </div>
+        <div class="section">
+          <h3>
+            <a href="#troll">
+              <img src="img/icon_troll.png" />
+              The Daily Troll
+            </a>
+          </h3>
+        </div>
+        <div class="section">
+          <h3>
+            <a href="#clicker">
+              <img src="img/icon_clicker.png" />
+              Clicker
+            </a>
+          </h3>
+        </div>
+        <div class="section">
+          <h3>
+            <a href="#member">
+              <img src="img/icon_member.png" />
+              Become a Member
+            </a>
+          </h3>
+        </div>
+        <div class="section">
+          <h3>
+            <a href="#about">
+              <img src="img/icon_about.png" />
+              About
+            </a>
+          </h3>
+        </div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="about">
+      <div class="about">
+        <h3>Become a member</h3>
+        <h3>Subscribe to Crosscut newsletters</h3>
+        <h3>About this app</h3>
+      </div>
+    </script>
+    
+    <script type="text/template" id="member">
+      <div class="member">
+        <h3>The member page</h3>
+        <p>For membership info.</p>
+      </div>
+    </script>
+    
+    <script type="text/template" id="stories-main">
+      <div class="stories-main">
+        <div class="loading">loading ...</div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="story-view">
+      <div class="story story-<%= id %>">
+        
+        <div class="story-header">
+          <h3 class="story-title"><%= title %></h3>
+          <div class="story-summary"><%= summary %></div>
+          <div class="authors">
+            <span class="by">by:</span>
+              <%= authors[0].display_name %>
+          </div>
+          <div class="story-date"><%= moment(pub_date).calendar() %></div>
+        </div>
+      
+        <% if (images.length != 0) { %>
+          <img src="http://crosscut.com<%= images[0].image %>" class="story-image" />
+        <% } %>
+
+        <div class="story-content"><%= body %>
+        
+        <% if (authors[0].bio.length != 0) { %>
+          <div class="author-bio"><%= authors[0].bio %></div>
+        <% } %>
+        
+      </div>
+    </script>
+    
+    <script type="text/template" id="story-list-view">
+    <% _.each(stories, function(story) { %>
+      <div class="story-teaser story-<%= story.id %>">
+        <a href="#story/<%= story.id %>">
+          <h3 class="story-title"><%= story.title %></h3>
+          <div class="story-summary"><%= story.summary %></div>
+          <div class="story-date"><%= moment(story.pub_date).calendar() %></div>
+        </a>
+      </div>
+    <% }); %>
+    <div class="next">More Stories</div>
+    </script>
+    
+    <script type="text/template" id="daily-troll-main">
+      <div class="troll-main">
+        <img src="img/troll.png" class="troll" />
+        <h3 class="troll">The Daily Troll</h3>
+        <p class="troll">Trolling the web so you don&#039;t have to, to bring you news for your evening commute.</p>
+        <div class="loading">loading ...</div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="daily-troll-list-view">
+      <% _.each(stories, function(story) { %>
+        <div class="story-teaser story-<%= story.id %>">
+          <a href="#story/<%= story.id %>">
+            <h3 class="story-title"><%= story.title %></h3>
+            <div class="story-summary"><%= story.summary %></div>
+          </a>
+        </div>
+      <% }); %>
+      <div class="next">More Stories</div>
+    </script>
+    
+    <script type="text/template" id="clicker-main">
+      <div class="clicker-main">
+        <h3 class="troll">Clicker</h3>
+        <p class="troll">The latest from news outlets and blogs around the Northwest and beyond, chosen by Crosscut editors.</p>
+        <div class="loading">loading ...</div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="clicker-list-view">
+      <% _.each(stories, function(story) { %>
+        <div class="story-teaser story-<%= story.id %>">
+          <a href="<%= story.url %>" class="clicker-link">
+            <h3 class="story-title"><%= story.title %></h3>
+            <div class="story-summary"><%= story.summary %></div>
+            <div class="story-date"><%= moment(story.pub_date).calendar() %></div>
+          </a>
+        </div>
+      <% }); %>
+      <div class="next">More Stories</div>
+    </script>
+    
+    
+    <!-- LIBRARIES! -->
+    <script type="text/javascript" src="cordova-2.3.0.js"></script>
+    <script type="text/javascript" src="js/lib/underscore.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/backbone.js"></script>
+    <script type="text/javascript" src="js/lib/backbone.paginator.js"></script>
+    <script type="text/javascript" src="js/lib/backbone.routefilter.min.js"></script>
+    <script type="text/javascript" src="js/lib/ftscroller.js"></script>
+    <script type="text/javascript" src="js/lib/fastclick.js"></script>
+    <script type="text/javascript" src="js/lib/moment.min.js"></script>
+    
+    <!-- CROSSCUT! -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/app/models/stories.js"></script>
+    <script type="text/javascript" src="js/app/models/clicker.js"></script>
+    <script type="text/javascript" src="js/app/models/troll.js"></script>
+    <script type="text/javascript" src="js/app/routers/index.js"></script>
+    <script type="text/javascript" src="js/app/views/stories.js"></script>
+    <script type="text/javascript" src="js/app/views/troll.js"></script>
+    <script type="text/javascript" src="js/app/views/home.js"></script>
+    <script type="text/javascript" src="js/app/views/member.js"></script>
+    <script type="text/javascript" src="js/app/views/about.js"></script>
+    <script type="text/javascript" src="js/app/views/clicker.js"></script>
+    <script type="text/javascript" src="js/app/views/root.js"></script>
+    
+    
+    <script type="text/javascript">
+      app.initialize();
+    </script>
+  </body>
+</html>
