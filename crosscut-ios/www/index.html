@@ -71,21 +71,53 @@
             </a>
           </h3>
         </div>
+        <div class="section">
+          <h3>
+            <a href="http://crosscut.com" class="main-site">
+              Visit Crosscut.com
+            </a>
+          </h3>
+        </div>
       </div>
     </script>
     
     <script type="text/template" id="about">
       <div class="about">
-        <h3>Become a member</h3>
-        <h3>Subscribe to Crosscut newsletters</h3>
-        <h3>About this app</h3>
+        <h1>About Crosscut</h1>
+        <p>Crosscut Public Media is a 501(c)3 nonprofit news organization.  Founded in 2007, Crosscut’s mission is to reveal and strengthen the civic and cultural life of Seattle and the Pacific Northwest. We do this primarily through our online daily news magazine, Crosscut.com, devoted to high-quality journalism and commentary. We are nonpartisan and self-sustaining.</p>
+        Our readership is concentrated primarily in Seattle, Bellevue, Olympia and Tacoma, but we also have a loyal following throughout the Pacific Northwest, prompting our catch-phrase, “News of the Great Nearby.”
+        
+        <h2>Background</h2>
+        <p>Crosscut was founded by David Brewster and is now led by Publisher and CEO Greg Shaw, who reports to the Crosscut board of directors. Our business model emphasizes maximum community impact through a relatively small staff that works closely with a stable of just over 100 freelance writers and contributors with specific news or assignment “beats.”</p>
+        
+        <h2>Crosscut supports itself with revenues from the following sources:</h2>
+        <p> · Foundation support</p>
+        <p> · Individual donors</p>
+        <p> · Members</p>
+        <p> · Earned revenue from advertising, sponsorships, events and content licensing.</p>
+
+        <p>This mix of revenues reflects the fact that a new model for journalism in America is emerging, and Crosscut is playing a role.</p>  
+        <p>High quality, online-only, nonprofit news is being closely followed by the federal government, academia and large foundations such as the Pew and Knight Foundations..  Crosscut Seattle, The Texas Tribune, the MinnPost and a handful of others are moving this experiment forward, something the U.S. Senate also has followed in recent years with its hearing on the Future of Journalism.</p>
+        <p>Crosscut works to shine a bright light on issues ranging from education to at-risk-youth, the environment, technology, culture and other state/local policy issues.  With today’s fragmented media landscape, we simply don’t have the resources of traditional print and broadcast to report on a fire, a game or a vote.</p>
+        <p>Instead we focus on explaining the why and the how that community leaders demand.  Crosscut’s community of more than 100 smart, experienced writers and editors can flesh out, supplement — and at times contradict — traditional print and broadcast reporting.  Our readers want independent analysis — data, evidence and sound logic — to inform, engage and activate our region on the most important and the most relevant civic and cultural topics. They also expect to enjoy our site, to be entertained.</p>
+        
+        <h2>Crosscut is optimistic, in the face of a generally pessimistic mood in journalism, for several reasons:</h2>
+        <p> · Journalism still matters, a lot.  Quality, insightful journalistic writing and reporting will be demanded by business, cultural, community and other leaders forever.  Leaders need the kind of context and perspective that news organizations like Crosscut can provide. This is particularly true at the local level, where commercial journalism is floundering.  The question we must answer is whether we can scale to meet the demands of this influential market.  Much is made of social media as the place where news is headed.  But the fact is that social media depends heavily on actual news reporting.  Without real journalism there would be little to “follow” or “like.”
+        <p> · The ingredients are here.  Seattle has the four critical elements that we believe will set the course for the future of journalism – community-spirited donors, a web-savvy local population, well-educated readers and an under-utilized corps of writers and editors. 
+        <p> · Crosscut is part of an important part of the news landscape.  Crosscut is one of the premier online sites for quality, community-based thinking and analysis.  It has a passionate (and highly influential) following, a dedicated team of writers and editors and it has a technological platform to build upon.  These are real assets.
+        <p> · Our readers!  Crosscut’s readership has grown steadily in all its years of publishing and in early 2013 is rising 15 percent per month.
+        <div class="section"><h3><a href="#member">Become a Crosscut member.</a></h3></div>
+        
       </div>
     </script>
     
     <script type="text/template" id="member">
       <div class="member">
-        <h3>The member page</h3>
-        <p>For membership info.</p>
+        <h1>Become a Member of Crosscut</h1>
+        <h2>Help support high-quality journalism for our community</h2>
+        <p>Thank you for supporting Crosscut Public Media, a 501 (c)(3) non-profit news organization. Annual memberships help support Crosscut in its mission to reveal and strengthen the civic and cultural life of Seattle and the Pacific Northwest.</p>
+        <p>Insightful, balanced, and compelling news coverage of the most important stories in Seattle and the Northwest is updated on our Website throughout the day.</p>
+        <div class="section"><h3><a href="http://crosscut.com/donate/" class="member">Become a member via our main site, crosscut.com.</a></h3></div>
       </div>
     </script>
     
@@ -166,7 +198,7 @@
     <script type="text/template" id="clicker-list-view">
       <% _.each(stories, function(story) { %>
         <div class="story-teaser story-<%= story.id %>">
-          <a href="<%= story.url %>" rel="external" target="_system">
+          <a href="<%= story.url %>" class="clicker-link">
             <h3 class="story-title"><%= story.title %></h3>
             <div class="story-summary"><%= story.summary %></div>
             <div class="story-date"><%= moment(story.pub_date).calendar() %></div>

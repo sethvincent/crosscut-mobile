@@ -12,7 +12,14 @@ Crosscut.Views.ClickerListView = Backbone.View.extend({
   },
   
   events: {
+    'click .clicker-link': 'clicker',
     'click .next': 'update'
+  },
+  
+  clicker: function(e){
+    e.preventDefault();
+    var href = $(e.currentTarget).attr('href');
+    window.open(href, '_system');
   },
   
   update: function(e){
