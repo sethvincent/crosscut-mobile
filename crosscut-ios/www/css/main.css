@@ -71,6 +71,11 @@ h2 {
   margin-bottom: 5px; 
 }
 
+small {
+  color: #999;
+  margin-top: 20px;
+}
+
 #app {
 }
 

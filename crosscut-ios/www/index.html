@@ -10,10 +10,11 @@
     <div id="app">
       <header>
         <span class="back">back</span>
-        <h1><a href="/"><img src="img/crosscut_logo.png"></a></h1>
+        <h1><a href=""><img src="img/crosscut_logo.png"></a></h1>
       </header>
       <div id="scrollable">
         <div class="wrapper">
+
         </div>
       </div>
       <footer>
@@ -79,6 +80,7 @@
           </h3>
         </div>
       </div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
     </script>
     
     <script type="text/template" id="about">
@@ -105,10 +107,12 @@
         <p> · Journalism still matters, a lot.  Quality, insightful journalistic writing and reporting will be demanded by business, cultural, community and other leaders forever.  Leaders need the kind of context and perspective that news organizations like Crosscut can provide. This is particularly true at the local level, where commercial journalism is floundering.  The question we must answer is whether we can scale to meet the demands of this influential market.  Much is made of social media as the place where news is headed.  But the fact is that social media depends heavily on actual news reporting.  Without real journalism there would be little to “follow” or “like.”
         <p> · The ingredients are here.  Seattle has the four critical elements that we believe will set the course for the future of journalism – community-spirited donors, a web-savvy local population, well-educated readers and an under-utilized corps of writers and editors. 
         <p> · Crosscut is part of an important part of the news landscape.  Crosscut is one of the premier online sites for quality, community-based thinking and analysis.  It has a passionate (and highly influential) following, a dedicated team of writers and editors and it has a technological platform to build upon.  These are real assets.
-        <p> · Our readers!  Crosscut’s readership has grown steadily in all its years of publishing and in early 2013 is rising 15 percent per month.
+        <p> · Our readers!  Crosscut’s readership has grown steadily in all its years of publishing.
         <div class="section"><h3><a href="#member">Become a Crosscut member.</a></h3></div>
         
       </div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
+      
     </script>
     
     <script type="text/template" id="member">
@@ -119,12 +123,16 @@
         <p>Insightful, balanced, and compelling news coverage of the most important stories in Seattle and the Northwest is updated on our Website throughout the day.</p>
         <div class="section"><h3><a href="http://crosscut.com/donate/" class="member">Become a member via our main site, crosscut.com.</a></h3></div>
       </div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
+      
     </script>
     
     <script type="text/template" id="stories-main">
       <div class="stories-main">
         <div class="loading">loading ...</div>
       </div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
+      
     </script>
     
     <script type="text/template" id="story-view">
@@ -154,23 +162,23 @@
     </script>
     
     <script type="text/template" id="story-list-view">
-    <% _.each(stories, function(story) { %>
-      <div class="story-teaser story-<%= story.id %>">
-        <a href="#story/<%= story.id %>">
-          <h3 class="story-title"><%= story.title %></h3>
-          <div class="story-summary"><%= story.summary %></div>
-          <div class="story-date"><%= moment(story.pub_date).calendar() %></div>
-        </a>
-      </div>
-    <% }); %>
-    <div class="next">More Stories</div>
+      <% _.each(stories, function(story) { %>
+        <div class="story-teaser story-<%= story.id %>">
+          <a href="#story/<%= story.id %>">
+            <h3 class="story-title"><%= story.title %></h3>
+            <div class="story-summary"><%= story.summary %></div>
+            <div class="story-date"><%= moment(story.pub_date).calendar() %></div>
+          </a>
+        </div>
+      <% }); %>
+      <div class="next">More Stories</div>    
     </script>
     
     <script type="text/template" id="daily-troll-main">
       <div class="troll-main">
         <img src="img/troll.png" class="troll" />
         <h3 class="troll">The Daily Troll</h3>
-        <p class="troll">Trolling the web so you don&#039;t have to, to bring you news for your evening commute.</p>
+        <p class="troll">Trolling the web so you don&#039;t have to, bringing you news for your evening commute.</p>
         <div class="loading">loading ...</div>
       </div>
     </script>
@@ -185,6 +193,8 @@
         </div>
       <% }); %>
       <div class="next">More Stories</div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
+      
     </script>
     
     <script type="text/template" id="clicker-main">
@@ -206,6 +216,8 @@
         </div>
       <% }); %>
       <div class="next">More Stories</div>
+      <small class="legal">&#169; 2013 Crosscut Public Media</small> <small class="version">v1.0.0</small>
+      
     </script>
     
     
